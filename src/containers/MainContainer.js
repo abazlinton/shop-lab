@@ -24,7 +24,7 @@ const MainContainer = () => {
 
   return (
     <Router>
-      <Header />
+      <Header noOfBasketItems={basketItemIds.length} />
       <Routes>
         <Route
           path="/"

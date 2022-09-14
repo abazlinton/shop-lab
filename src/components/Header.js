@@ -16,7 +16,7 @@ const HeaderGroup = styled.hgroup`
   padding-left: 30px;
 `;
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ noOfBasketItems }) => {
   return (
     <Header>
       <HeaderGroup>
@@ -32,8 +32,7 @@ const HeaderComponent = () => {
         </ul>
       </nav>
       <div id="user-info">
-        {/* <h3>Welcome back {user.name}</h3> */}
-        {/* <h4>You have {user.basket.length} items in your basket</h4> */}
+        <h4>You have {noOfBasketItems} items in your basket</h4>
         <Link to="/basket">Go to Basket</Link>
       </div>
     </Header>
