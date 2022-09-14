@@ -14,28 +14,17 @@ const ItemPara = styled.p`
   margin: 5px;
 `;
 
-const Button = styled.button`
-  background-color: white;
-  color: black;
-  margin: 5px;
-  border: 2px solid grey;
-  border-radius: 8px;
-`;
-
-const Item = ({ product, addToBasket }) => {
-  const onClick = () => {
-    addToBasket(product.id);
-  };
-
+const Item = ({ product }) => {
   return (
-    <StockItem>
-      <ItemImage item={product} alt="product" />
-      <Button onClick={onClick}>Add To Basket</Button>
-      <Link to={`/products/${product.id}`}>
-        <p>{product.name}</p>
-      </Link>
-      <p>£{product.price}</p>
-    </StockItem>
+    <>
+      <StockItem>
+        <ItemImage item={product} alt="product" />
+        <Link to={`/products/${product.id}`}>
+          <p>{product.name}</p>
+        </Link>
+        <p>£{product.price}</p>
+      </StockItem>
+    </>
   );
 };
 

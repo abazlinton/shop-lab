@@ -30,14 +30,18 @@ const Basket = ({ items, removeFromBasket }) => {
       <li key={index}>
         <hr />
         <span>
-          <Product product={item} />
+          <Product product={item.product} />
+          <h3>Quantity: {item.quantity}</h3>
         </span>
-        <Button onClick={() => removeItem(item.id)}>Remove</Button>
+        <Button onClick={() => removeItem(item.product.id)}>Remove one</Button>
       </li>
     );
   });
 
-  const total = items.reduce((subTotal, item) => (subTotal += item.price), 0);
+  const total = items.reduce(
+    (subTotal, item) => (subTotal += item.product.price * item.quantity),
+    0
+  );
 
   return (
     <Basketlist>
