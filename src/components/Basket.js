@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ItemImage from "./ItemImage";
 
 const Basketlist = styled.div`
   width: 80%;
@@ -29,7 +30,7 @@ const Basket = ({ items, removeFromBasket }) => {
         <hr />
         <span>
           {item.name} £{item.price}
-          <img src={require("../images/" + item.image)} alt="item" />
+          <ItemImage item={item} />
         </span>
         <Button onClick={() => removeItem(item.id)}>Remove</Button>
       </li>

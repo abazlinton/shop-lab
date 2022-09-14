@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import ItemImage from "./ItemImage";
 
 const StockItem = styled.div`
   margin: 5px;
   display: flex;
   flex-direction: column;
-`;
-
-const ItemImage = styled.img`
-  height: 300px;
-  box-shadow: 2px 2px 4px grey;
 `;
 
 const ItemPara = styled.p`
@@ -31,7 +27,7 @@ const Item = ({ product, addToBasket }) => {
 
   return (
     <StockItem>
-      <ItemImage src={require("../images/" + product.image)} alt="product" />
+      <ItemImage item={product} alt="product" />
       <Button onClick={onClick}>Add To Basket</Button>
       <p>{product.name}</p>
       <p>£{product.price}</p>
