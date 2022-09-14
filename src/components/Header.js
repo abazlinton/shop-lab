@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
@@ -22,7 +21,9 @@ const HeaderComponent = ({ noOfBasketItems }) => {
   return (
     <Header>
       <HeaderGroup>
-        <h1>DJ Sports</h1>
+        <Link to="/">
+          <h1>DJ Sports</h1>
+        </Link>
         <h4>Prince of Trainers</h4>
       </HeaderGroup>
 
