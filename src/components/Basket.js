@@ -26,8 +26,7 @@ const Basket = ({ items, removeFromBasket }) => {
 
   const basketComponents = items.map((item, index) => {
     return (
-      // use index here as product ids are not unique as we sometimes add same product > 1 times
-      <li key={index}>
+      <li key={item.product.id}>
         <hr />
         <span>
           <Product product={item.product} />
