@@ -18,17 +18,14 @@ const Button = styled.button`
   border-radius: 8px;
 `;
 
-const Basket = ({ basketItems, removeFromBasket, getProductForId }) => {
+const Basket = ({ items, removeFromBasket }) => {
   const removeItem = (id) => {
     removeFromBasket(id);
   };
 
-  const basketComponents = basketItems.map((id) => {
-    const item = getProductForId(id);
-    if (!item) return null;
-    console.log(item);
+  const basketComponents = items.map((item) => {
     return (
-      <li>
+      <li key={item.id}>
         <hr />
         <span>
           {item.name} £{item.price}
@@ -42,11 +39,7 @@ const Basket = ({ basketItems, removeFromBasket, getProductForId }) => {
   return (
     <Basketlist>
       <h2>Your items: </h2>
-      {basketItems.length > 0 ? (
-        <ul>{basketComponents}</ul>
-      ) : (
-        <p>Basket Is Empty</p>
-      )}
+      {items.length > 0 ? <ul>{basketComponents}</ul> : <p>Basket Is Empty</p>}
     </Basketlist>
   );
 };

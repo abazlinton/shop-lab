@@ -24,17 +24,17 @@ const Button = styled.button`
   border-radius: 8px;
 `;
 
-const Item = ({ item, user, addToBasket }) => {
+const Item = ({ product, addToBasket }) => {
   const onClick = () => {
-    addToBasket(item.id);
+    addToBasket(product.id);
   };
 
   return (
     <StockItem>
-      <ItemImage src={require("../images/" + item.image)} alt="item" />
+      <ItemImage src={require("../images/" + product.image)} alt="product" />
       <Button onClick={onClick}>Add To Basket</Button>
-      <p>{item.name}</p>
-      <p>£{item.price}</p>
+      <p>{product.name}</p>
+      <p>£{product.price}</p>
     </StockItem>
   );
 };

@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
-import ItemsList from "../components/ItemsList";
-import productsData from "../data/products";
+import ProductsList from "../components/ProductsList";
+import productsData from "../data/productsData";
 import Basket from "../components/Basket";
 
 const MainContainer = () => {
-  const [basketItems, setBasketItems] = useState([]);
+  const [basketItemIds, setBasketItemIds] = useState([]);
   const [products, setProducts] = useState(productsData);
 
   const addToBasket = (productId) => {
-    setBasketItems([...basketItems, productId]);
+    setBasketItemIds([...basketItemIds, productId]);
   };
   const removeFromBasket = (productId) => {
-    const nextItems = basketItems.filter((id) => id !== productId);
-    console.log(nextItems);
-    setBasketItems(nextItems);
+    const nextBasketItemIds = basketItemIds.filter(
+      (basketItemId) => basketItemId !== productId
+    );
+    setBasketItemIds(nextBasketItemIds);
   };
   const getProductForId = (productId) => {
     return products.find((product) => product.id === productId);
@@ -27,15 +28,16 @@ const MainContainer = () => {
       <Routes>
         <Route
           path="/"
-          element={<ItemsList products={products} addToBasket={addToBasket} />}
+          element={
+            <ProductsList products={products} addToBasket={addToBasket} />
+          }
         />
         <Route
           path="/basket"
           element={
             <Basket
-              getProductForId={getProductForId}
+              items={basketItemIds.map(getProductForId)}
               removeFromBasket={removeFromBasket}
-              basketItems={basketItems}
             />
           }
         />
