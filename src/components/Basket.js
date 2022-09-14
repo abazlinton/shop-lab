@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ItemImage from "./ItemImage";
+import Product from "./Product";
 
 const Basketlist = styled.div`
   width: 80%;
@@ -24,22 +24,25 @@ const Basket = ({ items, removeFromBasket }) => {
     removeFromBasket(id);
   };
 
-  const basketComponents = items.map((item) => {
+  const basketComponents = items.map((item, index) => {
     return (
-      <li key={item.id}>
+      // use index here as product ids are not unique as we sometimes add same product > 1 times
+      <li key={index}>
         <hr />
         <span>
-          {item.name} £{item.price}
-          <ItemImage item={item} />
+          <Product product={item} />
         </span>
         <Button onClick={() => removeItem(item.id)}>Remove</Button>
       </li>
     );
   });
 
+  const total = items.reduce((subTotal, item) => (subTotal += item.price), 0);
+
   return (
     <Basketlist>
       <h2>Your items: </h2>
+      <h3>Total: £{total}</h3>
       {items.length > 0 ? <ul>{basketComponents}</ul> : <p>Basket Is Empty</p>}
     </Basketlist>
   );

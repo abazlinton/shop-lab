@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import ProductsList from "../components/ProductsList";
 import productsData from "../data/productsData";
 import Basket from "../components/Basket";
+import ShowProduct from "../components/ShowProduct";
 
 const MainContainer = () => {
   const [basketItemIds, setBasketItemIds] = useState([]);
@@ -38,6 +39,15 @@ const MainContainer = () => {
             <Basket
               items={basketItemIds.map(getProductForId)}
               removeFromBasket={removeFromBasket}
+            />
+          }
+        />
+        <Route
+          path="/products/:id"
+          element={
+            <ShowProduct
+              getProductForId={getProductForId}
+              addToBasket={addToBasket}
             />
           }
         />

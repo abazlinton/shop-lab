@@ -5,7 +5,7 @@ import styled from "styled-components";
 const ProductList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 `;
 
 const ProductsList = ({ products, addToBasket }) => {

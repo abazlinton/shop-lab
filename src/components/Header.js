@@ -28,12 +28,16 @@ const HeaderComponent = ({ noOfBasketItems }) => {
 
       <nav>
         <ul>
-          <li>
-            {location.pathname !== "/" && <Link to="/">View Products</Link>}
-            {location.pathname !== "/basket" && (
+          {location.pathname !== "/" && (
+            <li>
+              <Link to="/">View Products</Link>
+            </li>
+          )}
+          {location.pathname !== "/basket" && (
+            <li>
               <Link to="/basket">View Basket</Link>
-            )}
-          </li>
+            </li>
+          )}
         </ul>
       </nav>
       <div id="user-info">
