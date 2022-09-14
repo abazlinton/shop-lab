@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -17,6 +17,8 @@ const HeaderGroup = styled.hgroup`
 `;
 
 const HeaderComponent = ({ noOfBasketItems }) => {
+  const location = useLocation();
+
   return (
     <Header>
       <HeaderGroup>
@@ -27,7 +29,10 @@ const HeaderComponent = ({ noOfBasketItems }) => {
       <nav>
         <ul>
           <li>
-            <Link to="/">View Stock</Link>
+            {location.pathname !== "/" && <Link to="/">View Products</Link>}
+            {location.pathname !== "/basket" && (
+              <Link to="/basket">View Basket</Link>
+            )}
           </li>
         </ul>
       </nav>
@@ -36,7 +41,6 @@ const HeaderComponent = ({ noOfBasketItems }) => {
           You have {noOfBasketItems ? noOfBasketItems : "no"} items in your
           basket
         </h4>
-        <Link to="/basket">Go to Basket</Link>
       </div>
     </Header>
   );
