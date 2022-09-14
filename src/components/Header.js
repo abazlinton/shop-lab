@@ -32,7 +32,10 @@ const HeaderComponent = ({ noOfBasketItems }) => {
         </ul>
       </nav>
       <div id="user-info">
-        <h4>You have {noOfBasketItems} items in your basket</h4>
+        <h4>
+          You have {noOfBasketItems ? noOfBasketItems : "no"} items in your
+          basket
+        </h4>
         <Link to="/basket">Go to Basket</Link>
       </div>
     </Header>
